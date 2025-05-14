@@ -1,0 +1,7 @@
+# Logs
+# .NET build files
+MediaPlayerV7/bin/
+MediaPlayerV7/obj/
+MediaPlayerV7/Videos
+
+*.vsidx
