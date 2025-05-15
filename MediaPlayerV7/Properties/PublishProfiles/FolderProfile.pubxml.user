@@ -5,12 +5,12 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>F:\AI\MediaPlayerV7\MediaPlayerV7\bin\app.publish\</_PublishTargetUrl>
-    <History>True|2025-05-14T20:01:41.0878157Z||;True|2025-05-14T14:14:57.4775951-04:00||;</History>
+    <History>True|2025-05-15T18:43:04.6582992Z||;True|2025-05-15T14:39:52.1953109-04:00||;True|2025-05-14T16:01:41.0878157-04:00||;True|2025-05-14T14:14:57.4775951-04:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
     <File Include="About.aspx">
-      <publishTime>05/14/2025 14:10:55</publishTime>
+      <publishTime>05/15/2025 08:57:35</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>09/10/2013 20:29:20</publishTime>
@@ -19,10 +19,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/10/2013 20:29:20</publishTime>
     </File>
     <File Include="bin/MediaPlayerV7.dll">
-      <publishTime>05/14/2025 16:01:25</publishTime>
+      <publishTime>05/15/2025 14:42:39</publishTime>
     </File>
     <File Include="bin/MediaPlayerV7.pdb">
-      <publishTime>05/14/2025 16:01:25</publishTime>
+      <publishTime>05/15/2025 14:42:39</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.FriendlyUrls.dll">
       <publishTime>07/30/2013 20:57:30</publishTime>
@@ -304,13 +304,16 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>05/14/2025 14:10:55</publishTime>
     </File>
     <File Include="Default.aspx">
-      <publishTime>05/14/2025 15:42:49</publishTime>
+      <publishTime>05/15/2025 14:38:19</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>05/14/2025 14:10:55</publishTime>
     </File>
     <File Include="Global.asax">
       <publishTime>05/14/2025 14:10:55</publishTime>
+    </File>
+    <File Include="projectInfo.pdf">
+      <publishTime>05/15/2025 11:34:09</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.js">
       <publishTime>05/14/2025 14:11:00</publishTime>
@@ -433,7 +436,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>05/14/2025 14:11:05</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>05/14/2025 15:24:53</publishTime>
+      <publishTime>05/15/2025 14:42:48</publishTime>
     </File>
     <File Include="Site.Mobile.Master">
       <publishTime>05/14/2025 14:11:06</publishTime>

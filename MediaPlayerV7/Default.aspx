@@ -33,6 +33,13 @@
                      style="display: none; height: 480px; width: 640px; resize: none; box-sizing: border-box;"></textarea>
                 </div>
             </div>
+            <div style="display: flex; align-items: flex-start; gap: 20px; padding-top: 10px; height:30px">
+                Download Individual Files   
+                <a id="downloadVideo" runat="server" target="_blank" href="#" rel="stylesheet" download >Video</a>
+                <a id="downloadAudio" runat="server" target="_blank" href="#" rel="stylesheet" download >Audio</a>
+                <a id="downloadTranscript" runat="server" target="_blank" href="#" rel="stylesheet" download >Transcription</a>
+                <a id="downloadCC" runat="server" target="_blank" href="#" rel="stylesheet" download >Closed Caption File</a>
+            </div>
         </section>
 
         <script type="text/javascript">
@@ -41,6 +48,14 @@
                 var source = document.getElementById('videoSource');
                 var track = document.getElementById('captionTrack');
                 var textArea = document.getElementById('textContent');
+
+                var dlVideo = document.getElementById('MainContent_downloadVideo');
+                var dlAudio = document.getElementById('MainContent_downloadAudio');
+                var dlTranscript = document.getElementById('MainContent_downloadTranscript');
+                var dlCC = document.getElementById('MainContent_downloadCC');
+
+                var ddlLanguages = document.getElementById('<%= ddlLanguages.ClientID %>'); // Get the language dropdown
+
                 source.src = src;
 
                 // Set VTT track to same path as video, but with .vtt extension
@@ -48,6 +63,16 @@
                     var vttSrc = src.substring(0, src.lastIndexOf('.')) + '.vtt';
                     track.src = vttSrc;
                     track.style.display = '';
+
+                    // Update the srclang attribute based on the selected language
+                    var selectedLanguage = ddlLanguages.value; // Get the selected language value
+                    track.srclang = selectedLanguage; // Set the srclang attribute
+
+                    dlVideo.href = vttSrc.substring(0, vttSrc.lastIndexOf('.')) + '.mp4';
+                    dlAudio.href = vttSrc.substring(0, vttSrc.lastIndexOf('.')) + '.wav';
+                    dlTranscript.href = vttSrc.substring(0, vttSrc.lastIndexOf('.')) + '.txt';
+                    dlCC.href = vttSrc;
+
                 } else {
                     track.src = '';
                     track.style.display = 'none';

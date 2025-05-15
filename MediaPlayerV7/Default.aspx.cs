@@ -10,10 +10,14 @@ namespace MediaPlayerV7
 {
     public partial class _Default : System.Web.UI.Page
     {
+        private static FileSystemWatcher _folderWatcher;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                InitializeFolderWatcher();
+                RefreshVideoFolders();
                 PopulateVideoFolders();
 
                 // Select the first video folder if available
@@ -42,7 +46,52 @@ namespace MediaPlayerV7
                 }
             }
         }
+        private void InitializeFolderWatcher()
+        {
+            string videosPath = Server.MapPath("~/Videos");
 
+            // Ensure the directory exists
+            if (!Directory.Exists(videosPath))
+            {
+                Directory.CreateDirectory(videosPath);
+            }
+
+            // Set up the FileSystemWatcher
+            _folderWatcher = new FileSystemWatcher
+            {
+                Path = videosPath,
+                NotifyFilter = NotifyFilters.DirectoryName,
+                Filter = "*.*", // Monitor all changes
+                IncludeSubdirectories = false // Only monitor the main Videos folder
+            };
+
+            // Attach event handlers
+            _folderWatcher.Created += OnFolderCreated;
+            _folderWatcher.EnableRaisingEvents = true; // Start monitoring
+        }
+
+        private void OnFolderCreated(object sender, FileSystemEventArgs e)
+        {
+            // Check if the created item is a directory
+            if (Directory.Exists(e.FullPath))
+            {
+                // Refresh the video folders list
+                RefreshVideoFolders();
+            }
+        }
+
+        private void RefreshVideoFolders()
+        {
+            string videosPath = Server.MapPath("~/Videos");
+            ddlVideoFolders.Items.Clear();
+
+            // Add all subfolders to the dropdown list
+            foreach (var directory in Directory.GetDirectories(videosPath))
+            {
+                string folderName = Path.GetFileName(directory);
+                ddlVideoFolders.Items.Add(folderName);
+            }
+        }
         private void PopulateVideoFolders()
         {
             string videosRoot = Server.MapPath("~/Videos");
