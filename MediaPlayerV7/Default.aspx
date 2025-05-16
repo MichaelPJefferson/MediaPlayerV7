@@ -5,7 +5,8 @@
     <main>
         <!-- Video Selection UI -->
         <section class="row" aria-labelledby="videoPlayerTitle">
-            <h2 id="videoPlayerTitle">Featured Video</h2>
+            <h2 id="videoPlayerTitle">Video Translation Tool</h2>
+            <h4 id="videoPlayerTitleDescrition">Upload mp4 filesto be transcribed and translated to a variety of languages.<br />Currently configured for Spanish, French, and Greek.</h4>
             <div style="display: flex; align-items: center; gap: 20px; padding: 10px; border: 1px solid #ccc; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); border-radius: 5px; background-color: #f9f9f9;">
                 <asp:Label ID="lblVideo" runat="server" AssociatedControlID="ddlVideoFolders" Text="Video" style="min-width:70px; margin-right:5px;" />
                 <asp:DropDownList ID="ddlVideoFolders" runat="server" AutoPostBack="true"
@@ -19,6 +20,7 @@
                     <input type="file" id="fileUpload" accept=".mp4" style="margin-left:15px;" />
                     <button type="button" id="btnUpload" style="margin-left:5px;">Upload</button>
                     <progress id="uploadProgress" value="0" max="100" style="width:120px; margin-left:5px; display:none;"></progress>
+                    <button type="button" id="btnRefresh" style="margin-left:5px;">Refresh</button>
                 </div>
             </div>
             <div style="display: flex; align-items: flex-start; gap: 20px; padding-top: 0px;">
@@ -28,9 +30,9 @@
                     Your browser does not support the video tag.
                 </video>
                 <!-- Text Field for Loading .txt Content -->
-                <div style="padding-top: 80px;">
+                <div style="padding-top: 90px;">
                 <textarea id="textContent" rows="20" readonly 
-                     style="display: none; height: 480px; width: 640px; resize: none; box-sizing: border-box;"></textarea>
+                     style="display: none; height: 510px; width: 500px; resize: none; box-sizing: border-box;"></textarea>
                 </div>
             </div>
             <div style="display: flex; align-items: flex-start; gap: 20px; padding-top: 10px; height:30px">
@@ -163,7 +165,7 @@
                     xhr.onreadystatechange = function () {
                         if (xhr.readyState === 4) {
                             if (xhr.status === 200) {
-                                alert('Upload complete!');
+                                alert('Upload complete.  Refresh the Page after a minute. (Depending on the video size you might require more time).');
                             } else {
                                 alert('Upload failed: ' + xhr.statusText);
                             }
@@ -173,7 +175,16 @@
                     xhr.send(formData);
                 });        });
     </script>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var btnRefresh = document.getElementById('btnRefresh');
+            if (btnRefresh) {
+                btnRefresh.addEventListener('click', function () {
+                    window.location.reload();
+                });
+            }
+        });
+    </script>
     </main>
 
 </asp:Content>
